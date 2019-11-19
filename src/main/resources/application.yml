@@ -1,0 +1,6 @@
+server:
+  port: ${port:8092}
+  
+service:
+  urls:
+    herokuapp: https://user-info.herokuapp.com/users/
