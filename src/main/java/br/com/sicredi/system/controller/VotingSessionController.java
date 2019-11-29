@@ -1,6 +1,5 @@
 package br.com.sicredi.system.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.http.MediaType;
@@ -42,9 +41,9 @@ public interface VotingSessionController {
 	public ResponseEntity<VotingSessionResponseDto> create(VotingSessionRequestDto votingSession);
 	
 	@GetMapping({"/v1.0.0/findVotingSessionsToDateCreation"})
-	@ApiOperation(value = "Find Voting Sessionn from Date", 
+	@ApiOperation(value = "Find Voting Sessionn by session title", 
 		nickname = "VotingSessionFindFromDate", 
-		notes = "Find a voting session list from a creation date.", 
+		notes = "Find a voting session list from a session title.", 
 		response = VotingSessionResponseDto.class, 
 		authorizations = {}, 
 		tags = {"Endpoint Voting Session"})
@@ -57,5 +56,5 @@ public interface VotingSessionController {
 			@ApiResponse(code = 422, message = "Unprocessable Entity", response = ErrorDto.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDto.class)
 	})
-	public ResponseEntity<List<VotingSessionResponseDto>> findVotingSessionsToDateCreation(LocalDate dateCreation);
+	public ResponseEntity<VotingSessionResponseDto> findVotingSessionsBySessionTitle(String sessionTitle);
 }

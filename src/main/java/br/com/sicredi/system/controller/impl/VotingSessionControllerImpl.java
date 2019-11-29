@@ -1,8 +1,5 @@
 package br.com.sicredi.system.controller.impl;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +29,12 @@ public class VotingSessionControllerImpl implements VotingSessionController {
 	}
 
 	@Override
-	public ResponseEntity<List<VotingSessionResponseDto>> findVotingSessionsToDateCreation(LocalDate dateCreation) {
-		List<VotingSessionResponseDto> votingSessionResponseDtoList = null;
+	public ResponseEntity<VotingSessionResponseDto> findVotingSessionsBySessionTitle(String sessionTitle) {
+		VotingSessionResponseDto votingSessionResponseDto = null;
 		
-		votingSessionResponseDtoList = this.votingSessionService.findVotingSessionsToDateCreation(dateCreation);
+		votingSessionResponseDto = this.votingSessionService.findVotingSessionsBySessionTitle(sessionTitle);
 		
-		return new ResponseEntity<List<VotingSessionResponseDto>>(votingSessionResponseDtoList, HttpStatus.OK);
+		return new ResponseEntity<VotingSessionResponseDto>(votingSessionResponseDto, HttpStatus.OK);
 	}
 
 }

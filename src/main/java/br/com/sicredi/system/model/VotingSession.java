@@ -22,7 +22,7 @@ public class VotingSession implements Serializable {
 	
 //	@Column(name="date_creation")
 //	@Temporal(TemporalType.DATE)
-	private LocalDateTime dateCreation;
+	private LocalDateTime votationCreateDate;
 	
 //	@Column(name="votation_closed_date")
 //	@Temporal(TemporalType.DATE)
@@ -31,7 +31,7 @@ public class VotingSession implements Serializable {
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Vote> votes;
 	
-	private boolean opened;
+	private Boolean messageSend;
 
 	public Long getId() {
 		return id;
@@ -49,12 +49,12 @@ public class VotingSession implements Serializable {
 		this.sessionTitle = sessionTitle;
 	}
 
-	public LocalDateTime getDateCreation() {
-		return dateCreation;
+	public LocalDateTime getVationCreateDate() {
+		return votationCreateDate;
 	}
 
-	public void setDateCreation(LocalDateTime dateCreation) {
-		this.dateCreation = dateCreation;
+	public void setVationCreateDate(LocalDateTime votationCreateDate) {
+		this.votationCreateDate = votationCreateDate;
 	}
 
 	public LocalDateTime getVotationClosedDate() {
@@ -73,11 +73,11 @@ public class VotingSession implements Serializable {
 		this.votes = votes;
 	}
 
-	public boolean isOpened() {
-		return opened;
+	public Boolean getMessageSend() {
+		return messageSend;
 	}
 
-	public void setOpened(boolean opened) {
-		this.opened = opened;
+	public void setMessageSend(Boolean messageSend) {
+		this.messageSend = messageSend;
 	}
 }
