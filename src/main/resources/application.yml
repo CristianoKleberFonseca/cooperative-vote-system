@@ -1,6 +1,26 @@
 server:
   port: ${port:8092}
-  
+spring:
+  application:
+    name: cooperative-vote-system
+  rabbitmq:
+    addresses: localhost:5672
+    username: guest
+    password: guest
+    virtual-host: /
+  cloud:
+    stream:
+      bindings:
+        publishExchangeAssemblyResult:
+          destination: publish-exchange-assembly-result
+      rabbit:
+        bindings:
+          publishExchangeAssemblyResult:
+            producer:
+              exchangeType: fanout
+      binders:
+        rabbitMQ: 
+          type: rabbit
 service:
   urls:
     herokuapp: https://user-info.herokuapp.com/users/
