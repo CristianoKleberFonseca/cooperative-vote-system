@@ -2,6 +2,7 @@ package br.com.sicredi.system.controller.impl;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class VotingSessionControllerImpl implements VotingSessionController {
 	public ResponseEntity<VotingSessionResponseDto> create(@Valid @RequestBody VotingSessionRequestDto votingSession) {
 		VotingSessionResponseDto votingSessionResponseDto = null;
 		
-		votingSessionResponseDto = this.votingSessionService.create(votingSession);
+		BeanUtils.copyProperties(this.votingSessionService.create(votingSession), votingSessionResponseDto);
 		
 		return new ResponseEntity<VotingSessionResponseDto>(votingSessionResponseDto, HttpStatus.CREATED);
 	}
@@ -32,7 +33,7 @@ public class VotingSessionControllerImpl implements VotingSessionController {
 	public ResponseEntity<VotingSessionResponseDto> findVotingSessionsBySessionTitle(String sessionTitle) {
 		VotingSessionResponseDto votingSessionResponseDto = null;
 		
-		votingSessionResponseDto = this.votingSessionService.findVotingSessionsBySessionTitle(sessionTitle);
+		BeanUtils.copyProperties(this.votingSessionService.findVotingSessionsBySessionTitle(sessionTitle), votingSessionResponseDto);
 		
 		return new ResponseEntity<VotingSessionResponseDto>(votingSessionResponseDto, HttpStatus.OK);
 	}
