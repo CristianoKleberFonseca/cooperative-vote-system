@@ -2,8 +2,15 @@ package br.com.sicredi.system.model;
 
 import java.io.Serializable;
 
-//@Entity(name="Associate")
-//@Table(name="associate")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name="Associate")
+@Table(name="associate")
 public class Associate implements Serializable {
 
 	/**
@@ -11,24 +18,26 @@ public class Associate implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long idAssociate;
 	
-//	@Column(name="cpf")
+	@Column(name="cpf")
 	private String cpf;
 
-//	@Column(name="name")
+	@Column(name="name")
 	private String name;
 	
+	@Column(name="status")
 	private String status;
 
-	public Long getId() {
-		return id;
+	public Long getIdAssociate() {
+		return idAssociate;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdAssociate(Long idAssociate) {
+		this.idAssociate = idAssociate;
 	}
 
 	public String getCpf() {

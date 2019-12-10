@@ -4,8 +4,18 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-//@Entity(name="VotingSession")
-//@Table(name="voting_session")
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity(name="VotingSession")
+@Table(name="voting_session")
 public class VotingSession implements Serializable {
 
 	/**
@@ -13,32 +23,33 @@ public class VotingSession implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long idVotingSession;
 	
-//	@Column(name="session_ title")
+	@Column(name="session_title")
 	private String sessionTitle; 
 	
-//	@Column(name="date_creation")
-//	@Temporal(TemporalType.DATE)
+	@Column(name="votation_create_date")
 	private LocalDateTime votationCreateDate;
 	
-//	@Column(name="votation_closed_date")
-//	@Temporal(TemporalType.DATE)
+	@Column(name="votation_closed_date")
 	private LocalDateTime votationClosedDate;
 
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinTable(name = "Vote_Voting_Session")
 	private List<Vote> votes;
 	
+	@Column(name="message_send")
 	private Boolean messageSend;
 
-	public Long getId() {
-		return id;
+	public Long getIdVotingSession() {
+		return idVotingSession;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdVotingSession(Long idVotingSession) {
+		this.idVotingSession = idVotingSession;
 	}
 
 	public String getSessionTitle() {
