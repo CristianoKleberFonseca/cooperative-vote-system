@@ -10,20 +10,20 @@ public class VotingSessionResponseDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	private Long idVotingSession;
 	
 	private String sessionTitle; 
 	
-	private LocalDateTime dateCreation;
+	private LocalDateTime votationCreateDate;
 	
 	private LocalDateTime votationClosedDate;
 
-	public Long getId() {
-		return id;
+	public Long getIdVotingSession() {
+		return idVotingSession;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdVotingSession(Long idVotingSession) {
+		this.idVotingSession = idVotingSession;
 	}
 
 	public String getSessionTitle() {
@@ -34,12 +34,12 @@ public class VotingSessionResponseDto implements Serializable {
 		this.sessionTitle = sessionTitle;
 	}
 
-	public LocalDateTime getDateCreation() {
-		return dateCreation;
+	public LocalDateTime getVotationCreateDate() {
+		return votationCreateDate;
 	}
 
-	public void setDateCreation(LocalDateTime dateCreation) {
-		this.dateCreation = dateCreation;
+	public void setVotationCreateDate(LocalDateTime votationCreateDate) {
+		this.votationCreateDate = votationCreateDate;
 	}
 
 	public LocalDateTime getVotationClosedDate() {

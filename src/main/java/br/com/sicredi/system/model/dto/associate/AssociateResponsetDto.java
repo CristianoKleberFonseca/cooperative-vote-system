@@ -9,7 +9,7 @@ public class AssociateResponsetDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	private Long idAssociate;
 	
 	private String cpf;
 	
@@ -17,12 +17,12 @@ public class AssociateResponsetDto implements Serializable {
 	
 	private String status;
 
-	public Long getId() {
-		return id;
+	public Long getIdAssociate() {
+		return idAssociate;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdAssociate(Long idAssociate) {
+		this.idAssociate = idAssociate;
 	}
 
 	public String getCpf() {
