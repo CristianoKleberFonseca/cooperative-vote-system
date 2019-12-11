@@ -1,5 +1,8 @@
 package br.com.sicredi.system.model.dto.error;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ErrorDetailDto {
 	private String locale;
 	private String description;
