@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +38,7 @@ public class VotingSession implements Serializable {
 	@Column(name="votation_closed_date")
 	private LocalDateTime votationClosedDate;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinTable(name = "Vote_Voting_Session")
 	private List<Vote> votes;
 	
@@ -60,11 +61,11 @@ public class VotingSession implements Serializable {
 		this.sessionTitle = sessionTitle;
 	}
 
-	public LocalDateTime getVationCreateDate() {
+	public LocalDateTime getVotationCreateDate() {
 		return votationCreateDate;
 	}
 
-	public void setVationCreateDate(LocalDateTime votationCreateDate) {
+	public void setVotationCreateDate(LocalDateTime votationCreateDate) {
 		this.votationCreateDate = votationCreateDate;
 	}
 
