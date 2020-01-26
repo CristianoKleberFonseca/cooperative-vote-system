@@ -10,11 +10,11 @@ public class VotingSessionResultDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final String RESULTADO_SIM_VENCEU = "A quantidade de votos SIM superou a quantidade de votos NÃO.";
+	public static final String RESULT_YES_WINNER = "A quantidade de votos SIM superou a quantidade de votos NÃO.";
 	
-	public static final String RESULTADO_NAO_VENCEU = "A quantidade de votos NÃO superou a quantidade de votos SIM.";
+	public static final String RESULT_NO_WINNER = "A quantidade de votos NÃO superou a quantidade de votos SIM.";
 	
-	public static final String RESULTADO_EMPATE = "Ocorreu um empate entre os votos SIM e NÃO";
+	public static final String RESULT_DRAW = "Ocorreu um empate entre os votos SIM e NÃO";
 	
 	private String sessionTitle; 
 	
