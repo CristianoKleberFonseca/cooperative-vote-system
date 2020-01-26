@@ -1,7 +1,7 @@
 package br.com.sicredi.system.broker.output;
 
-import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.support.MessageBuilder;
@@ -12,25 +12,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.sicredi.system.config.broker.BrokerOutput;
 import br.com.sicredi.system.model.dto.votingsession.VotingSessionResultDto;
+import br.com.sicredi.system.schedule.VotingSessionSchedule;
 
 @Component
 @EnableBinding({BrokerOutput.class})
 public class AdapterPublishAssemblyResultBroker {
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(VotingSessionSchedule.class);
 	@Autowired
-	BrokerOutput brokerOutput;
-	
+	private BrokerOutput brokerOutput;	
 	@Autowired
-	ObjectMapper objectMapper;
+	private ObjectMapper objectMapper;
 	
-	public boolean sendMessageAssemblyResult(List<VotingSessionResultDto> votingSessionResultDtoList) {
+	public boolean sendMessageAssemblyResult(VotingSessionResultDto votingSessionResultDto) {
 		String message = null;
 		boolean sendMessage = false;
 		try {
-			message = this.objectMapper.writeValueAsString(votingSessionResultDtoList);
+			message = this.objectMapper.writeValueAsString(votingSessionResultDto);
 			sendMessage = brokerOutput.publishExchangeAssemblyResult().send(MessageBuilder.withPayload(message).build());
 		} catch (JsonProcessingException e) {
-			// TODO: Incluir LOG de erro da transformação da mensagem em string.
+			LOGGER.error(String.format("Occurred an error sending the result: %s", e.getMessage()));
 		}		
 		return sendMessage;
 	}
