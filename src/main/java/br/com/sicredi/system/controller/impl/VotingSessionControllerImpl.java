@@ -22,7 +22,7 @@ public class VotingSessionControllerImpl implements VotingSessionController {
 
 	@Override
 	public ResponseEntity<VotingSessionResponseDto> create(@Valid @RequestBody VotingSessionRequestDto votingSession) {
-		VotingSessionResponseDto votingSessionResponseDto = null;
+		VotingSessionResponseDto votingSessionResponseDto = new VotingSessionResponseDto();
 		
 		BeanUtils.copyProperties(this.votingSessionService.create(votingSession), votingSessionResponseDto);
 		
@@ -31,7 +31,7 @@ public class VotingSessionControllerImpl implements VotingSessionController {
 
 	@Override
 	public ResponseEntity<VotingSessionResponseDto> findVotingSessionsBySessionTitle(String sessionTitle) {
-		VotingSessionResponseDto votingSessionResponseDto = null;
+		VotingSessionResponseDto votingSessionResponseDto = new VotingSessionResponseDto();
 		
 		BeanUtils.copyProperties(this.votingSessionService.findVotingSessionsBySessionTitle(sessionTitle), votingSessionResponseDto);
 		

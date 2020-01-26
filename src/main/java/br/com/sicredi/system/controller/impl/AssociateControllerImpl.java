@@ -22,12 +22,10 @@ public class AssociateControllerImpl implements AssociateController {
 
 	@Override
 	public ResponseEntity<AssociateResponsetDto> insert(@Valid @RequestBody AssociateRequestDto associate) {
-		AssociateResponsetDto associateResponseDto = null;
-				
-		associateResponseDto = new AssociateResponsetDto();
+		AssociateResponsetDto associateResponseDto = new AssociateResponsetDto();
+		
 		BeanUtils.copyProperties(this.associateService.insert(associate), associateResponseDto);
 		
 		return new ResponseEntity<AssociateResponsetDto>(associateResponseDto, HttpStatus.CREATED);
 	}
-
 }

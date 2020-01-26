@@ -13,5 +13,4 @@ public interface VotingSessionRepository extends JpaRepository<VotingSession, Lo
 	public VotingSession findVotingSessionBySessionTitle(String sessionTitle);
 	
 	public List<VotingSession> findVotingSessionByMessageSend(Boolean messageSend);
-
 }
