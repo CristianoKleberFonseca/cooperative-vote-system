@@ -21,14 +21,11 @@ import br.com.sicredi.system.repository.AssociateRepository;
 public class AssociateService {
 	
 	@Autowired
-	private ErrorDetailDto errorDetailDto;
-	
+	private ErrorDetailDto errorDetailDto;	
 	@Autowired
 	private MessageService messageService;
-
 	@Autowired
 	private AssociateAdapterInbound associateAdapterInbound;
-	
 	@Autowired
 	private AssociateRepository associateRepository;
 			
@@ -38,11 +35,11 @@ public class AssociateService {
 		if(associateRequestDto.getCpf() == null || "".equals(associateRequestDto.getCpf())) {
 			this.errorDetailDto = new ErrorDetailDto("AssociateSrvice.insert.field.cpf", this.messageService.getMessage("message.validate.required.associate.cpf"));
 			
-			throw new BusinessException(this.messageService.getMessage("message.title.fiel.required"),  Arrays.asList(this.errorDetailDto));
+			throw new BusinessException(this.messageService.getMessage("message.title.validate.required"),  Arrays.asList(this.errorDetailDto));
 		} else if(associateRequestDto.getName() == null || "".equals(associateRequestDto.getName())) {
 			this.errorDetailDto = new ErrorDetailDto("AssociateSrvice.insert.field.name", this.messageService.getMessage("message.validate.required.associate.name"));
 			
-			throw new BusinessException(this.messageService.getMessage("message.title.fiel.required"),  Arrays.asList(this.errorDetailDto)); 
+			throw new BusinessException(this.messageService.getMessage("message.title.validate.required"),  Arrays.asList(this.errorDetailDto)); 
 		}
 		associate = new Associate();
 		BeanUtils.copyProperties(associateRequestDto, associate);
@@ -57,7 +54,7 @@ public class AssociateService {
 		if(cpf == null || "".equals(cpf)) {
 			this.errorDetailDto = new ErrorDetailDto("AssociateSrvice.findByCPF.field.cpf", this.messageService.getMessage("message.validate.required.associate.cpf"));
 			
-			throw new BusinessException(this.messageService.getMessage("message.title.fiel.required"),  Arrays.asList(this.errorDetailDto));
+			throw new BusinessException(this.messageService.getMessage("message.title.validate.required"),  Arrays.asList(this.errorDetailDto));
 		}
 		
 		associate = this.associateRepository.findByCpf(cpf);
